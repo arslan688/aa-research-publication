@@ -1,0 +1,195 @@
+/* =========================================
+   AA Research Publication - Animations
+   ========================================= */
+
+/* --- 1. KEYFRAMES --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseSoft {
+  0% { box-shadow: 0 0 0 0 rgba(13, 139, 130, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(13, 139, 130, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(13, 139, 130, 0); }
+}
+
+/* --- 2. HERO SECTION (Page Load Animations) --- */
+/* Staggering the entrance of the hero text for a premium feel */
+.hero .eyebrow { animation: fadeInUp 0.6s ease-out forwards; }
+.hero h1 { animation: fadeInUp 0.6s ease-out 0.15s forwards; opacity: 0; }
+.hero .lead { animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0; }
+.hero-actions { animation: fadeInUp 0.6s ease-out 0.45s forwards; opacity: 0; }
+.trustline { animation: fadeInUp 0.6s ease-out 0.6s forwards; opacity: 0; }
+
+/* Staggering the metric cards popping in */
+.metrics .metric:nth-child(1) { animation: scaleIn 0.5s ease-out 0.5s forwards; opacity: 0; }
+.metrics .metric:nth-child(2) { animation: scaleIn 0.5s ease-out 0.6s forwards; opacity: 0; }
+.metrics .metric:nth-child(3) { animation: scaleIn 0.5s ease-out 0.7s forwards; opacity: 0; }
+.metrics .metric:nth-child(4) { animation: scaleIn 0.5s ease-out 0.8s forwards; opacity: 0; }
+
+
+/* --- 3. HOVER & INTERACTIVE ANIMATIONS --- */
+/* Services Section: Nudge the number on hover */
+.service:hover .num {
+  transform: translateX(8px);
+  transition: transform 0.3s ease;
+}
+
+/* Process Section: Pulse the step number on hover */
+.step:hover .step-dot {
+  animation: pulseSoft 1.5s infinite;
+  background: var(--teal-soft);
+}
+
+/* Why Section: Subtle scale and tilt on the icon */
+.why-item:hover .why-icon {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.3s ease;
+}
+
+/* Primary Buttons: Subtle pulse to encourage clicks */
+.btn-primary:hover {
+  animation: pulseSoft 1.2s infinite;
+}
+
+
+/* --- 4. SCROLL REVEAL UTILITY CLASSES --- */
+/* Add these classes to HTML elements and toggle the 'active' class via JS */
+.reveal-up { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out; 
+}
+.reveal-up.active { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+.reveal-scale { 
+  opacity: 0; 
+  transform: scale(0.9); 
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+}
+.reveal-scale.active { 
+  opacity: 1; 
+  transform: scale(1); 
+}
+
+/* --- 5. SERVICES SECTION CASCADE (Scroll Reveal) --- */
+/* Staggers the animation delays so the cards pop up one by one */
+.services .service:nth-child(1).active { transition-delay: 0.1s; }
+.services .service:nth-child(2).active { transition-delay: 0.2s; }
+.services .service:nth-child(3).active { transition-delay: 0.3s; }
+.services .service:nth-child(4).active { transition-delay: 0.4s; }
+.services .service:nth-child(5).active { transition-delay: 0.5s; }
+.services .service:nth-child(6).active { transition-delay: 0.6s; }
+
+/* --- 6. SERVICES INNER ELEMENTS (Hover Micro-interactions) --- */
+/* Prepares the inner list items for animation */
+.service ul li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* When the card is hovered, the bullet points gently slide right */
+.service:hover ul li {
+  transform: translateX(6px);
+  color: var(--ink);
+}
+
+/* Staggers the inner list items on hover for a fluid feel */
+.service:hover ul li:nth-child(1) { transition-delay: 0.0s; }
+.service:hover ul li:nth-child(2) { transition-delay: 0.05s; }
+.service:hover ul li:nth-child(3) { transition-delay: 0.1s; }
+
+/* --- 7. PROCESS SECTION CASCADE (Scroll Reveal) --- */
+/* Staggers the animation delays so the steps fade in sequentially */
+.process .step:nth-child(1).active { transition-delay: 0.1s; }
+.process .step:nth-child(2).active { transition-delay: 0.3s; }
+.process .step:nth-child(3).active { transition-delay: 0.5s; }
+.process .step:nth-child(4).active { transition-delay: 0.7s; }
+
+/* --- 8. PROCESS INNER ELEMENTS (Hover Micro-interactions) --- */
+/* Prepares the text for animation */
+.step h3, .step p {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Adds a subtle upward lift and color change to the text on hover */
+.step:hover h3 {
+  transform: translateY(-3px);
+  color: var(--teal);
+}
+
+.step:hover p {
+  transform: translateY(-3px);
+}
+
+/* --- 9. WHY SECTION CASCADE (Scroll Reveal) --- */
+/* The dark panel comes in first */
+.why-panel.active { transition-delay: 0.1s; }
+
+/* Stagger the animation delays for the 4 points on the right */
+.why-points .why-item:nth-child(1).active { transition-delay: 0.2s; }
+.why-points .why-item:nth-child(2).active { transition-delay: 0.4s; }
+.why-points .why-item:nth-child(3).active { transition-delay: 0.6s; }
+.why-points .why-item:nth-child(4).active { transition-delay: 0.8s; }
+
+/* --- 10. WHY INNER ELEMENTS (Hover Micro-interactions) --- */
+/* Prepares the text container for animation */
+.why-item > div {
+  transition: transform 0.3s ease;
+}
+
+/* Gently slides the text to the right when the row is hovered */
+.why-item:hover > div {
+  transform: translateX(8px);
+}
+
+/* --- 11. PRICING SECTION CASCADE (Scroll Reveal) --- */
+/* Staggers the animation delays for the 3 pricing cards */
+.pricing .price-card:nth-child(1).active { transition-delay: 0.1s; }
+.pricing .price-card:nth-child(2).active { transition-delay: 0.3s; }
+.pricing .price-card:nth-child(3).active { transition-delay: 0.5s; }
+
+/* --- 12. PRICING INNER ELEMENTS (Hover Micro-interactions) --- */
+/* Smooth transition for the card lifting effect */
+.price-card {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+/* Card lifts up and casts a slightly larger shadow on hover */
+.price-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 22px 60px rgba(22, 39, 78, 0.12);
+}
+
+/* Makes sure the featured (middle) card lifts slightly higher since it starts elevated */
+.price-card.featured:hover {
+  transform: translateY(-14px);
+  box-shadow: 0 28px 70px rgba(13, 139, 130, 0.2);
+}
+
+/* Prepares the pricing feature list for animation */
+.price-card ul li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Slides the feature list items slightly to the right on hover */
+.price-card:hover ul li {
+  transform: translateX(5px);
+  color: var(--ink);
+}
+
+/* Staggers the inner list items on hover for a fluid feel */
+.price-card:hover ul li:nth-child(1) { transition-delay: 0.0s; }
+.price-card:hover ul li:nth-child(2) { transition-delay: 0.05s; }
+.price-card:hover ul li:nth-child(3) { transition-delay: 0.1s; }
+.price-card:hover ul li:nth-child(4) { transition-delay: 0.15s; }
+.price-card:hover ul li:nth-child(5) { transition-delay: 0.2s; }
+.price-card:hover ul li:nth-child(6) { transition-delay: 0.25s; }
